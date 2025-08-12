@@ -1,0 +1,380 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f6fafd;
+    color: #222;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+header {
+    width: 100%;
+    background: #1769aa;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 12px rgba(23, 105, 170, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05em;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #21c8af;
+}
+
+main,
+section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+.hero {
+    background: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9') center/cover;
+    color: #fff;
+    border-radius: 18px;
+    padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 24px rgba(23, 105, 170, 0.10);
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(23, 105, 170, 0.18);
+    border-radius: 18px;
+    z-index: 1;
+}
+
+.hero h1,
+.hero p,
+.hero .btn {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45), 0 1px 0 #fff;
+    background: rgba(23, 105, 170, 0.18);
+    border-radius: 8px;
+    padding: 0.2em 0.5em;
+}
+
+.hero h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 0.7em;
+    letter-spacing: 1px;
+}
+
+.hero p {
+    font-size: 1.15em;
+    margin-bottom: 1.2em;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.9em 2em;
+    background: linear-gradient(90deg, #21c8af 0%, #1769aa 100%);
+    color: #fff;
+    border: none;
+    border-radius: 32px;
+    font-weight: 600;
+    font-size: 1.1em;
+    box-shadow: 0 4px 16px rgba(23, 105, 170, 0.12);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #1769aa 0%, #21c8af 100%);
+    transform: scale(1.05);
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #1769aa;
+    margin-bottom: 1.2em;
+    letter-spacing: 0.5px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(23, 105, 170, 0.10);
+    padding: 2rem 1.2rem;
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 32px rgba(23, 105, 170, 0.18);
+    transform: translateY(-4px) scale(1.03);
+}
+
+.card h3 {
+    font-size: 1.15em;
+    color: #1769aa;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.card p {
+    font-size: 1em;
+    color: #222;
+    text-align: center;
+}
+
+iframe {
+    width: 100%;
+    height: 320px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(23, 105, 170, 0.10);
+    margin-top: 1.2rem;
+}
+
+footer {
+    width: 100%;
+    background: #1769aa;
+    color: #fff;
+    text-align: center;
+    padding: 1.2rem 0;
+    margin-top: 2rem;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 900px) {
+
+    main,
+    section {
+        max-width: 100%;
+        padding: 1.2rem 0.5rem;
+    }
+
+    .hero {
+        padding: 2.2rem 0.5rem 1.5rem 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .cards {
+        gap: 1rem;
+    }
+
+    .card {
+        width: 90%;
+        padding: 1.2rem 0.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        padding: 1.2rem 0.7rem 0.7rem 0.7rem;
+
+        header {
+            flex-direction: column;
+            padding: 1.2rem 0.7rem 0.7rem 0.7rem;
+            gap: 0.7rem;
+            font-size: 1.1em;
+            border-radius: 0 0 16px 16px;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+        }
+
+        nav {
+            gap: 1rem;
+            font-size: 1em;
+        }
+
+        .hero {
+            padding: 1.1rem 0.2rem 0.7rem 0.2rem;
+            margin-top: 0.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(23, 105, 170, 0.10);
+        }
+
+        .hero h1 {
+            font-size: 1.1em;
+            padding: 0.2em 0.1em;
+            background: rgba(23, 105, 170, 0.15);
+            border-radius: 5px;
+            margin-bottom: 0.4em;
+        }
+
+        .hero p {
+            font-size: 0.98em;
+            padding: 0.15em 0.08em;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 5px;
+            margin-bottom: 0.5em;
+        }
+
+        .btn {
+            font-size: 1em;
+            padding: 0.9em 1.7em;
+            border-radius: 22px;
+            margin-top: 0.5em;
+            box-shadow: 0 2px 10px rgba(23, 105, 170, 0.15);
+        }
+
+        .cards {
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            width: 100%;
+            padding: 1.1rem 0.6rem;
+            border-radius: 10px;
+            font-size: 1em;
+            box-shadow: 0 2px 10px rgba(23, 105, 170, 0.10);
+            margin-bottom: 0.4em;
+            border: 1px solid #eaf6f6;
+        }
+
+        .card h3 {
+            font-size: 1em;
+            margin-bottom: 0.3em;
+            color: #1769aa;
+        }
+
+        .card p {
+            font-size: 0.97em;
+            color: #222;
+        }
+
+        section {
+            padding: 0.8rem 0.2rem;
+        }
+
+        iframe {
+            height: 120px;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            box-shadow: 0 2px 8px rgba(23, 105, 170, 0.10);
+        }
+
+        footer {
+            padding: 0.8rem 0;
+            font-size: 0.95em;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .hero h1 {
+            font-size: 1.25em;
+            padding: 0.3em 0.2em;
+            background: rgba(23, 105, 170, 0.18);
+            border-radius: 6px;
+            margin-bottom: 0.5em;
+        }
+
+        .hero p {
+            font-size: 1em;
+            padding: 0.2em 0.1em;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 6px;
+            margin-bottom: 0.7em;
+        }
+
+        .btn {
+            font-size: 1.1em;
+            padding: 1.1em 2.5em;
+            border-radius: 28px;
+            margin-top: 0.7em;
+            box-shadow: 0 4px 16px rgba(23, 105, 170, 0.18);
+        }
+
+        .cards {
+            flex-direction: column;
+            gap: 1.3rem;
+            margin-top: 1.2rem;
+        }
+
+        .card {
+            width: 100%;
+            padding: 1.5rem 1rem;
+            border-radius: 16px;
+            font-size: 1.12em;
+            box-shadow: 0 4px 18px rgba(23, 105, 170, 0.13);
+            margin-bottom: 0.5em;
+            border: 1px solid #eaf6f6;
+        }
+
+        .card h3 {
+            font-size: 1.12em;
+            margin-bottom: 0.5em;
+            color: #1769aa;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #222;
+        }
+
+        section {
+            padding: 1.2rem 0.4rem;
+        }
+
+        iframe {
+            height: 160px;
+            border-radius: 12px;
+            margin-top: 0.7rem;
+            box-shadow: 0 2px 12px rgba(23, 105, 170, 0.10);
+        }
+
+        footer {
+            padding: 1.1rem 0;
+            font-size: 1em;
+            border-radius: 0 0 14px 14px;
+        }

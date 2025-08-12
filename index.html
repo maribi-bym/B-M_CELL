@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B&M - Venta y reparación de celulares</title>
+    <meta name="description" content="B&M en Achuapa: Venta de móviles y reparación de teléfonos celulares.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">B&M</div>
+        <nav>
+            <a href="#servicios">Servicios</a>
+            <a href="#ubicacion">Ubicación</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Venta y reparación de celulares</h1>
+        <p>En B&M te ofrecemos los mejores móviles y el mejor servicio técnico en Achuapa.</p>
+        <a href="#contacto" class="btn">Contáctanos</a>
+    </section>
+
+    <section id="servicios">
+        <h2>Nuestros Servicios</h2>
+        <div class="cards">
+            <div class="card" onclick="showWhatsappBtn()">
+                <h3>Venta de móviles</h3>
+                <p>Teléfonos nuevos y reacondicionados con garantía.</p>
+            </div>
+            <div class="card" onclick="showWhatsappBtn()">
+                <h3>Reparación de celulares</h3>
+                <p>Servicio profesional de reparación de celulares.</p>
+            </div>
+            <div class="card" onclick="showWhatsappBtn()">
+                <h3>Accesorios</h3>
+                <p>Cargadores, audífonos, fundas y mucho más.</p>
+            </div>
+        </div>
+        <div id="whatsapp-contact-container" style="display:none; text-align:center; margin-top:1em;">
+            <button class="btn" onclick="scrollToWhatsapp()">Contáctanos</button>
+        </div>
+    </section>
+
+    <section id="ubicacion">
+        <h2>Ubicación</h2>
+        <p>Nos encontramos en 3C46+2H Achuapa</p>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.209393137728!2d-86.5905361!3d13.0479232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f71bda6539068fd%3A0x4d90c0d42cc9721f!2sB%26M%20Cell!5e1!3m2!1ses!2sni!4v1691870000000!5m2!1ses!2sni"
+            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <button id="whatsapp-footer" class="btn" onclick="window.open('https://wa.me/50587153450','_blank')">Escríbenos
+            por WhatsApp</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 B&M - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

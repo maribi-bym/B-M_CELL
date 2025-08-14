@@ -29,7 +29,7 @@
     </header>
     <main class="main-animate">
         <section class="contacto">
-            <h1>Contáctanos</h1>
+            <h1 class="contacto-titulo">Contáctanos</h1>
             <form class="form-contacto" id="form-whatsapp">
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -63,7 +63,15 @@
         const navLinks = document.getElementById('nav-links');
 
         hamburgerMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                navLinks.classList.add('closing');
+                setTimeout(() => {
+                    navLinks.classList.remove('closing');
+                }, 500);
+            } else {
+                navLinks.classList.add('active');
+            }
         });
         // Logo lleva al inicio con animación
         document.getElementById('logo-home').addEventListener('click', function () {

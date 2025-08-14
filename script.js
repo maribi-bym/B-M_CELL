@@ -14,7 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.getElementById('nav-links');
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                navLinks.classList.add('closing');
+                setTimeout(() => {
+                    navLinks.classList.remove('closing');
+                }, 300); // Duración igual a la animación CSS
+            } else {
+                navLinks.classList.add('active');
+            }
         });
     }
 });

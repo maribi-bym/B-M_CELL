@@ -31,6 +31,9 @@ body {
     gap: 2rem;
     margin: 0;
     padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
 }
 
 .nav-links a {
@@ -237,6 +240,57 @@ footer {
     font-weight: bold;
 }
 
+.catalogo-titulo {
+    text-align: center;
+    margin-top: 2.5em;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+}
+
+.ubicacion-titulo {
+    text-align: center;
+    margin-top: 2.5em;
+    margin-bottom: 1.2em;
+    font-weight: bold;
+}
+
+.ubicacion-texto {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #222;
+}
+
+.contacto-titulo {
+    text-align: center;
+    margin-top: 2.5em;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+}
+
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutMenu {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
 @media (max-width: 700px) {
     .navbar {
         flex-direction: row;
@@ -285,7 +339,7 @@ footer {
         max-width: 340px;
         margin: 0 auto;
         padding: 1em 0.5em;
-        display: none;
+        display: flex;
         flex-direction: column;
         gap: 1em;
         align-items: center;
@@ -293,20 +347,16 @@ footer {
     }
 
     .nav-links.active {
+        opacity: 1;
+        pointer-events: auto;
         display: flex;
         animation: fadeInMenu 0.3s;
     }
 
-    @keyframes fadeInMenu {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .nav-links.closing {
+        animation: fadeOutMenu 0.3s forwards;
+        opacity: 0;
+        pointer-events: none;
     }
 
     .nav-links a {

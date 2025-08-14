@@ -11,8 +11,13 @@
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">B&M CELL</div>
-            <ul class="nav-links">
+            <div class="logo" id="logo-home" style="cursor:pointer;">B&M CELL</div>
+            <div class="hamburger" id="hamburger-menu" aria-label="Abrir menú" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
                 <li><a href="productos.html">Productos</a></li>
@@ -22,7 +27,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="main-animate">
         <section class="ubicacion">
             <h1>¿Dónde estamos?</h1>
             <p>Nos encontramos en 3C46+2H Achuapa, Nicaragua. ¡Visítanos y recibe atención personalizada!</p>
@@ -40,6 +45,19 @@
     <footer>
         <p>&copy; 2025 B&M CELL - Todos los derechos reservados</p>
     </footer>
+    <script>
+        // Script para el menú hamburguesa
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        // Logo lleva al inicio con animación
+        document.getElementById('logo-home').addEventListener('click', function () {
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 
 </html>

@@ -9,4 +9,12 @@
 // Ejemplo: Mensaje de bienvenida en consola
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Bienvenido a B&M - Electrónica y servicios en Achuapa");
+    // Menú hamburguesa
+    const hamburger = document.getElementById('hamburger-menu');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
 });

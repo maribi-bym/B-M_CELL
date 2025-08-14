@@ -193,36 +193,145 @@ footer {
     color: #222;
 }
 
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-animate {
+    animation: fadeInPage 0.7s cubic-bezier(.4, 0, .2, 1);
+}
+
 @media (max-width: 700px) {
     .navbar {
-        flex-direction: column;
-        gap: 1em;
-        padding: 1em 0.5em;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 1em;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+        margin-bottom: 0;
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        position: relative;
+        z-index: 20;
+    }
+
+    .hamburger span {
+        display: block;
+        height: 4px;
+        width: 100%;
+        background: #e60023;
+        margin: 7px 0;
+        border-radius: 2px;
+        transition: all 0.3s;
     }
 
     .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(247, 247, 247, 0.98);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        border-radius: 18px;
+        width: 90vw;
+        max-width: 340px;
+        margin: 0 auto;
+        padding: 1em 0.5em;
+        display: none;
         flex-direction: column;
         gap: 1em;
         align-items: center;
+        transition: box-shadow 0.2s, background 0.2s;
+    }
+
+    .nav-links.active {
+        display: flex;
+        animation: fadeInMenu 0.3s;
+    }
+
+    @keyframes fadeInMenu {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        padding: 0.5em 0;
+        border-radius: 12px;
+        width: 100%;
+        text-align: center;
+        transition: background 0.2s;
+    }
+
+    .nav-links a:hover {
+        background: #e60023;
+        color: #fff;
     }
 
     .hero {
-        padding: 2em 0.5em;
+        padding: 2em 0.5em 1em 0.5em;
+        margin-top: 0.5em;
+        text-align: center;
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.5em;
     }
 
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-bottom: 1em;
     }
 
-    .btn {
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7em;
+        margin-top: 1em;
+        align-items: center;
+    }
+
+    .hero .btn {
         width: 100%;
-        padding: 1em 0;
-        font-size: 1.1rem;
-        margin: 0.5em 0;
+        padding: 0.6em 0;
+        font-size: 1rem;
+        margin: 0.3em 0;
+        border-radius: 18px;
+        box-shadow: 0 2px 8px rgba(230, 0, 35, 0.10);
+        transition: box-shadow 0.2s, background 0.2s;
+    }
+
+    .hero .btn:hover {
+        background: #ad081b;
+        box-shadow: 0 4px 16px rgba(230, 0, 35, 0.16);
     }
 
     .cards,

@@ -12,8 +12,13 @@
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">B&M CELL</div>
-            <ul class="nav-links">
+            <div class="logo" id="logo-home" style="cursor:pointer;">B&M CELL</div>
+            <div class="hamburger" id="hamburger-menu" aria-label="Abrir menú" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
                 <li><a href="productos.html">Productos</a></li>
@@ -23,7 +28,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="main-animate">
         <section class="hero">
             <h1>Bienvenido a B&M CELL</h1>
             <p>Tu tienda de confianza en Achuapa para móviles, accesorios, electrónica y recargas Free Fire.</p>
@@ -49,6 +54,16 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const logoHome = document.getElementById('logo-home');
+            if (logoHome) {
+                logoHome.addEventListener('click', function () {
+                    window.location.href = 'index.html';
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

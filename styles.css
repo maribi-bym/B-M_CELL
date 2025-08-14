@@ -116,14 +116,35 @@ body {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
     padding: 2em 1em;
     text-align: center;
-    transition: box-shadow 0.2s, transform 0.2s;
+    transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
     position: relative;
+    border: 1.5px solid #f3f3f3;
+    /* Elegancia extra */
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 18px;
+    pointer-events: none;
+    box-shadow: 0 0 0 0 #e60023;
+    transition: box-shadow 0.3s;
 }
 
 .card:hover,
 .producto:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
-    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 36px rgba(230, 0, 35, 0.13), 0 2px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-6px) scale(1.035);
+    border: 1.5px solid #e60023;
+}
+
+.card:hover::before {
+    box-shadow: 0 0 16px 2px #e6002333;
 }
 
 .card img,
@@ -207,6 +228,13 @@ footer {
 
 .main-animate {
     animation: fadeInPage 0.7s cubic-bezier(.4, 0, .2, 1);
+}
+
+.servicios-titulo {
+    text-align: center;
+    margin-top: 2.5em;
+    margin-bottom: 1.5em;
+    font-weight: bold;
 }
 
 @media (max-width: 700px) {

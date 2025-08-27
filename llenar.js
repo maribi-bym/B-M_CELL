@@ -176,3 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
     renderProductos();
     actualizarCarritoCantidad();
 });
+
+
+// simon

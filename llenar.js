@@ -2,9 +2,10 @@
 
 const productos = [
     {
-        nombre: "infinix note 50 pro",
-        descripcion: "Android, iPhone, nuevos y reacondicionados.",
-        imagen: "img/smartphones/infinix note 50 pro.jpg",
+        nombre: "Spacrk 60C",
+        descripcion: "64 GB de almacenamiento 6 GB de RAM",
+        imagen: ["img/smartphones/spacrk Go2.png",
+            "img/smartphones/spacrk Go2 1.png"],
         alt: "Smartphones",
         precio: "C$0.00"
     },
@@ -117,21 +118,54 @@ function renderProductos() {
     if (!cardsContainer) return;
     cardsContainer.innerHTML = '';
     productos.forEach(producto => {
+        let imagenes = Array.isArray(producto.imagen) ? producto.imagen : [producto.imagen];
+        let imagenActual = 0;
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-      <img src="${producto.imagen}" alt="${producto.alt}" class="icon" style="cursor:zoom-in;">
+      <img src="${imagenes[0]}" alt="${producto.alt}" class="icon" style="cursor:zoom-in;">
       <h3>${producto.nombre}</h3>
       <p>${producto.descripcion}</p>
-      <p style='color:#e60023;font-weight:bold;'>${producto.precio}</p>
-      <button class="btn" style="margin-top:1em;" type="button">Agregar al carrito</button>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:0.7em; margin-top:1em;">
+        <button class="btn consultar-btn" type="button">Consultar</button>
+        <button class="btn carrito-btn" type="button">Agregar al carrito</button>
+      </div>
     `;
-        card.querySelector('img').addEventListener('click', function (e) {
-            e.stopPropagation();
-            const modal = crearModalImagen();
-            modal.querySelector('#modal-img').src = producto.imagen;
+        const imgEl = card.querySelector('img');
+        let longPressTimer;
+        imgEl.addEventListener('mousedown', function (e) {
+            longPressTimer = setTimeout(function () {
+                const modal = crearModalImagen();
+                modal.querySelector('#modal-img').src = imgEl.src;
+            }, 500);
         });
-        card.querySelector('button').addEventListener('click', function () {
+        imgEl.addEventListener('mouseup', function (e) {
+            clearTimeout(longPressTimer);
+        });
+        imgEl.addEventListener('mouseleave', function (e) {
+            clearTimeout(longPressTimer);
+        });
+        imgEl.addEventListener('touchstart', function (e) {
+            longPressTimer = setTimeout(function () {
+                const modal = crearModalImagen();
+                modal.querySelector('#modal-img').src = imgEl.src;
+            }, 500);
+        });
+        imgEl.addEventListener('touchend', function (e) {
+            clearTimeout(longPressTimer);
+        });
+        imgEl.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (imagenes.length > 1) {
+                imagenActual = (imagenActual + 1) % imagenes.length;
+                imgEl.src = imagenes[imagenActual];
+            }
+        });
+        card.querySelector('.consultar-btn').addEventListener('click', function () {
+            const mensaje = encodeURIComponent(`Hola, quiero consultar por el producto: ${producto.nombre}`);
+            window.open(`https://wa.me/50587153450?text=${mensaje}`, '_blank');
+        });
+        card.querySelector('.carrito-btn').addEventListener('click', function () {
             agregarAlCarrito(producto);
         });
         cardsContainer.appendChild(card);

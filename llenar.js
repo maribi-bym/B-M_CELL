@@ -134,6 +134,7 @@ function renderProductos() {
         const imgEl = card.querySelector('img');
         let longPressTimer;
         imgEl.addEventListener('mousedown', function (e) {
+            e.preventDefault();
             longPressTimer = setTimeout(function () {
                 const modal = crearModalImagen();
                 modal.querySelector('#modal-img').src = imgEl.src;
@@ -146,6 +147,7 @@ function renderProductos() {
             clearTimeout(longPressTimer);
         });
         imgEl.addEventListener('touchstart', function (e) {
+            e.preventDefault();
             longPressTimer = setTimeout(function () {
                 const modal = crearModalImagen();
                 modal.querySelector('#modal-img').src = imgEl.src;

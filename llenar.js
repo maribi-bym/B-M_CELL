@@ -2,12 +2,11 @@
 
 const productos = [
     {
-        nombre: "Spacrk 60C",
+        nombre: "Spacrk Go2",
         descripcion: "64 GB de almacenamiento 6 GB de RAM",
         imagen: ["img/smartphones/spacrk Go2.png",
             "img/smartphones/spacrk Go2 1.png"],
         alt: "Smartphones",
-        precio: "C$0.00"
     },
 ];
 

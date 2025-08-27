@@ -9,41 +9,6 @@ const productos = [
         alt: "Smartphones",
         precio: "C$0.00"
     },
-    {
-        nombre: "Teclados para PC",
-        descripcion: "Mecánicos",
-        imagen: "img/teclados/teclado.jpg",
-        alt: "Teclados",
-        precio: "C$0.00"
-    },
-    {
-        nombre: "cascos",
-        descripcion: "Bluetooth, cable, gaming.",
-        imagen: "img/audifonos/cascos.jpg",
-        alt: "cascos",
-        precio: "C$0.00"
-    },
-    {
-        nombre: "Memorias usb adata",
-        descripcion: "Memorias USB de alta velocidad.",
-        imagen: "img/memorias/memoria usb.jpg",
-        alt: "Memorias",
-        precio: "C$0.00"
-    },
-    {
-        nombre: "Micrófono gamer",
-        descripcion: "Streaming, clases, podcast.",
-        imagen: "img/microfonos/microfono gamer.jpg",
-        alt: "Micrófono gamer",
-        precio: "C$0.00"
-    },
-    {
-        nombre: "Funda de free fire",
-        descripcion: "Funda de free fire",
-        imagen: "img/fundas/funda de free fire.jpg",
-        alt: "Funda de free fire",
-        precio: "C$0.00"
-    }
 ];
 
 // Modal para mostrar imagen elegante
@@ -119,7 +84,6 @@ function renderProductos() {
     cardsContainer.innerHTML = '';
     productos.forEach(producto => {
         let imagenes = Array.isArray(producto.imagen) ? producto.imagen : [producto.imagen];
-        let imagenActual = 0;
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
@@ -132,6 +96,8 @@ function renderProductos() {
       </div>
     `;
         const imgEl = card.querySelector('img');
+        imgEl.imagenActual = 0;
+        imgEl.imagenes = imagenes;
         let longPressTimer;
         imgEl.addEventListener('mousedown', function (e) {
             e.preventDefault();
@@ -155,12 +121,17 @@ function renderProductos() {
         });
         imgEl.addEventListener('touchend', function (e) {
             clearTimeout(longPressTimer);
+            // Alternar imagen en móvil
+            if (imgEl.imagenes.length > 1) {
+                imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
+                imgEl.src = imgEl.imagenes[imgEl.imagenActual];
+            }
         });
         imgEl.addEventListener('click', function (e) {
             e.stopPropagation();
-            if (imagenes.length > 1) {
-                imagenActual = (imagenActual + 1) % imagenes.length;
-                imgEl.src = imagenes[imagenActual];
+            if (imgEl.imagenes.length > 1) {
+                imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
+                imgEl.src = imgEl.imagenes[imgEl.imagenActual];
             }
         });
         card.querySelector('.consultar-btn').addEventListener('click', function () {

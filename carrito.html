@@ -71,8 +71,51 @@
                 total += subtotal;
                 const card = document.createElement('div');
                 card.className = 'card';
+                // Soporte para varias imágenes
+                let imagenes = Array.isArray(producto.imagen) ? producto.imagen : [producto.imagen];
+                const imgEl = document.createElement('img');
+                imgEl.src = imagenes[0];
+                imgEl.alt = producto.alt;
+                imgEl.className = 'icon';
+                imgEl.imagenActual = 0;
+                imgEl.imagenes = imagenes;
+                let longPressTimer;
+                imgEl.addEventListener('mousedown', function (e) {
+                    e.preventDefault();
+                    longPressTimer = setTimeout(function () {
+                        const modal = crearModalImagen();
+                        modal.querySelector('#modal-img').src = imgEl.src;
+                    }, 500);
+                });
+                imgEl.addEventListener('mouseup', function (e) {
+                    clearTimeout(longPressTimer);
+                });
+                imgEl.addEventListener('mouseleave', function (e) {
+                    clearTimeout(longPressTimer);
+                });
+                imgEl.addEventListener('touchstart', function (e) {
+                    e.preventDefault();
+                    longPressTimer = setTimeout(function () {
+                        const modal = crearModalImagen();
+                        modal.querySelector('#modal-img').src = imgEl.src;
+                    }, 500);
+                });
+                imgEl.addEventListener('touchend', function (e) {
+                    clearTimeout(longPressTimer);
+                    // Alternar imagen en móvil
+                    if (imgEl.imagenes.length > 1) {
+                        imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
+                        imgEl.src = imgEl.imagenes[imgEl.imagenActual];
+                    }
+                });
+                imgEl.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (imgEl.imagenes.length > 1) {
+                        imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
+                        imgEl.src = imgEl.imagenes[imgEl.imagenActual];
+                    }
+                });
                 card.innerHTML = `
-                  <img src="${producto.imagen}" alt="${producto.alt}" class="icon">
                   <h3>${producto.nombre}</h3>
                   <p>${producto.descripcion}</p>
                   <p style="color:#e60023;font-weight:bold;">${producto.cantidad} pedido${producto.cantidad > 1 ? 's' : ''} de esto</p>
@@ -80,6 +123,7 @@
                   <p style="color:#222;font-weight:bold;">Subtotal: C$${subtotal.toFixed(2)}</p>
                   <button class="btn" style="margin-top:1em;background:#ad081b;" type="button">Eliminar</button>
                 `;
+                card.prepend(imgEl);
                 card.querySelector('button').addEventListener('click', function () {
                     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
                     if (producto.cantidad > 1) {

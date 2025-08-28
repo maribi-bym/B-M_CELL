@@ -57,7 +57,7 @@ const productos = [
     {
         nombre: "A06",
         descripcion: "64 GB de almacenamiento 6 GB de RAM",
-        imagen: ["img/smartphones/a06celeste.jpg"],
+        imagen: ["img/smartphones/A06celeste.jpg"],
         alt: "Smartphones",
     },
     {

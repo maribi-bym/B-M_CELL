@@ -66,8 +66,8 @@
                 return;
             }
             carrito.forEach((producto, idx) => {
-                let precioNum = parseFloat(producto.precio.replace('C$', '').replace(',', '.')) || 0;
-                let subtotal = precioNum * producto.cantidad;
+                let precioNum = parseFloat(producto.precio?.replace('C$', '').replace(',', '.') || '0') || 0;
+                let subtotal = precioNum * (producto.cantidad || 1);
                 total += subtotal;
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -75,7 +75,7 @@
                 let imagenes = Array.isArray(producto.imagen) ? producto.imagen : [producto.imagen];
                 const imgEl = document.createElement('img');
                 imgEl.src = imagenes[0];
-                imgEl.alt = producto.alt;
+                imgEl.alt = producto.alt || '';
                 imgEl.className = 'icon';
                 imgEl.imagenActual = 0;
                 imgEl.imagenes = imagenes;
@@ -118,15 +118,13 @@
                 card.innerHTML = `
                   <h3>${producto.nombre}</h3>
                   <p>${producto.descripcion}</p>
-                  <p style="color:#e60023;font-weight:bold;">${producto.cantidad} pedido${producto.cantidad > 1 ? 's' : ''} de esto</p>
-                  <p style="color:#222;font-weight:bold;">Precio unitario: ${producto.precio}</p>
-                  <p style="color:#222;font-weight:bold;">Subtotal: C$${subtotal.toFixed(2)}</p>
+                  <p style="color:#e60023;font-weight:bold;">${producto.cantidad || 1} pedido${(producto.cantidad || 1) > 1 ? 's' : ''} de esto</p>
                   <button class="btn" style="margin-top:1em;background:#ad081b;" type="button">Eliminar</button>
                 `;
                 card.prepend(imgEl);
                 card.querySelector('button').addEventListener('click', function () {
                     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-                    if (producto.cantidad > 1) {
+                    if ((producto.cantidad || 1) > 1) {
                         carrito[idx].cantidad -= 1;
                     } else {
                         carrito.splice(idx, 1);
@@ -136,12 +134,12 @@
                 });
                 cardsContainer.appendChild(card);
             });
-            // Mostrar total final
-            const totalDiv = document.createElement('div');
-            totalDiv.style.textAlign = 'center';
-            totalDiv.style.margin = '1em 0';
-            totalDiv.innerHTML = `<p style='color:#e60023;font-size:1.2em;font-weight:bold;'>Total a pagar: C$${total.toFixed(2)}</p>`;
-            cardsContainer.appendChild(totalDiv);
+            // Mostrar total final (oculto)
+            // const totalDiv = document.createElement('div');
+            // totalDiv.style.textAlign = 'center';
+            // totalDiv.style.margin = '1em 0';
+            // totalDiv.innerHTML = `<p style='color:#e60023;font-size:1.2em;font-weight:bold;'>Total a pagar: C$${total.toFixed(2)}</p>`;
+            // cardsContainer.appendChild(totalDiv);
         }
         function actualizarCarritoCantidad() {
             const span = document.getElementById('carrito-cantidad');
@@ -183,14 +181,9 @@
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
             if (carrito.length === 0) return;
             let mensaje = 'Hola, quiero pedir los siguientes productos:%0A';
-            let total = 0;
             carrito.forEach(p => {
-                let precioNum = parseFloat(p.precio.replace('C$', '').replace(',', '.')) || 0;
-                let subtotal = precioNum * p.cantidad;
-                total += subtotal;
-                mensaje += `- ${p.nombre} (${p.cantidad} pedido${p.cantidad > 1 ? 's' : ''}) - Precio unitario: ${p.precio} - Subtotal: C$${subtotal.toFixed(2)}%0A`;
+                mensaje += `- ${p.nombre} (${p.cantidad || 1} pedido${(p.cantidad || 1) > 1 ? 's' : ''}) - ${p.descripcion || ''}%0A`;
             });
-            mensaje += `%0ATotal a pagar: C$${total.toFixed(2)}`;
             window.open(`https://wa.me/50587153450?text=${mensaje}`, '_blank');
         });
     </script>

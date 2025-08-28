@@ -8,6 +8,107 @@ const productos = [
             "img/smartphones/spacrk Go2 1.png"],
         alt: "Smartphones",
     },
+    {
+        nombre: "Redmi 15C",
+        descripcion: "256 GB de almacenamiento 8 GB de RAM",
+        imagen: ["img/smartphones/redmi15c_negro.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Redmi 15C",
+        descripcion: "128 GB de almacenamiento 6 GB de RAM",
+        imagen: ["img/smartphones/redmi15c_azul.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Redmi A5",
+        descripcion: "64 GB de almacenamiento 6 GB de RAM",
+        imagen: ["img/smartphones/redmiA5.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "poco C71",
+        descripcion: "64 GB de almacenamiento 3 GB de RAM",
+        imagen: ["img/smartphones/pocoC71.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Spark Go1",
+        descripcion: "128 GB de almacenamiento 8 GB de RAM",
+        imagen: ["img/smartphones/sparkGo1.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Spark Go1",
+        descripcion: "64 GB de almacenamiento 6 GB de RAM",
+        imagen: ["img/smartphones/sparkGo1.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Infinix Smart 10",
+        descripcion: "64 GB de almacenamiento 6 GB de RAM",
+        imagen: ["img/smartphones/infinixsmart10.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Infinix Smart 10",
+        descripcion: "64 GB de almacenamiento 6 GB de RAM",
+        imagen: ["img/smartphones/infinixsmart10azul.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "A06",
+        descripcion: "64 GB de almacenamiento 6 GB de RAM",
+        imagen: ["img/smartphones/a06celeste.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "A16",
+        descripcion: "128 GB de almacenamiento 6 GB de RAM",
+        imagen: ["img/smartphones/A16Verde.jpg",
+            "img/smartphones/A16Negro.jpg",
+            "img/smartphones/A16Plata.jpg"
+        ],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "A36",
+        descripcion: "256 GB de almacenamiento 8 GB de RAM",
+        imagen: ["img/smartphones/A36.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "A56",
+        descripcion: "256 GB de almacenamiento 8 GB de RAM",
+        imagen: ["img/smartphones/A56negro.jpg",
+            "img/smartphones/A56Verde.jpg"
+        ],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Tecno 30C",
+        descripcion: "256 GB de almacenamiento 16 GB de RAM",
+        imagen: ["img/smartphones/Tecno30C.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Redmi Note 14S",
+        descripcion: "256 GB de almacenamiento 8 GB de RAM",
+        imagen: ["img/smartphones/Redminote14s.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Redmi3x",
+        descripcion: "256 GB de almacenamiento 8 GB de RAM",
+        imagen: ["img/smartphones/Redmi3x.jpg"],
+        alt: "Smartphones",
+    },
+    {
+        nombre: "Redmi Note 14",
+        descripcion: "256 GB de almacenamiento 8 GB de RAM",
+        imagen: ["img/smartphones/Redminote14.jpg"],
+        alt: "Smartphones",
+    },
 ];
 
 // Modal para mostrar imagen elegante
@@ -120,10 +221,12 @@ function renderProductos() {
         });
         imgEl.addEventListener('touchend', function (e) {
             clearTimeout(longPressTimer);
-            // Alternar imagen en móvil
             if (imgEl.imagenes.length > 1) {
                 imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
                 imgEl.src = imgEl.imagenes[imgEl.imagenActual];
+            } else {
+                const modal = crearModalImagen();
+                modal.querySelector('#modal-img').src = imgEl.src;
             }
         });
         imgEl.addEventListener('click', function (e) {
@@ -131,6 +234,9 @@ function renderProductos() {
             if (imgEl.imagenes.length > 1) {
                 imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
                 imgEl.src = imgEl.imagenes[imgEl.imagenActual];
+            } else {
+                const modal = crearModalImagen();
+                modal.querySelector('#modal-img').src = imgEl.src;
             }
         });
         card.querySelector('.consultar-btn').addEventListener('click', function () {

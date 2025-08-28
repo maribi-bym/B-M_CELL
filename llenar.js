@@ -146,7 +146,7 @@ function actualizarCarritoCantidad() {
 
 function agregarAlCarrito(producto) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    let existente = carrito.find(p => p.nombre === producto.nombre);
+    let existente = carrito.find(p => p.nombre === producto.nombre && p.descripcion === producto.descripcion);
     if (existente) {
         existente.cantidad = (existente.cantidad || 1) + 1;
     } else {

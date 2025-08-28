@@ -81,7 +81,6 @@
             }
         }
 
-        // Inicializar el label y placeholder al cargar la página
         document.addEventListener('DOMContentLoaded', mostrarCampoID);
 
         function enviarRecargaWhatsapp() {
@@ -100,7 +99,6 @@
             window.open(`https://wa.me/50587153450?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
 
-        // Funcionalidad del menú hamburguesa
         const hamburgerMenu = document.getElementById('hamburger-menu');
         const navLinks = document.getElementById('nav-links');
 
@@ -108,7 +106,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Logo lleva al inicio con animación
         document.getElementById('logo-home').addEventListener('click', function () {
             window.location.href = 'index.html';
         });

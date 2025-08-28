@@ -57,25 +57,21 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Venta de productos
             const cardVenta = document.getElementById('card-venta');
             const btnVenta = document.getElementById('btn-productos');
             cardVenta.addEventListener('click', function (e) {
                 if (e.target !== btnVenta) btnVenta.style.display = 'inline-block';
             });
-            // Reparación
             const cardReparacion = document.getElementById('card-reparacion');
             const btnReparacion = document.getElementById('btn-contacto');
             cardReparacion.addEventListener('click', function (e) {
                 if (e.target !== btnReparacion) btnReparacion.style.display = 'inline-block';
             });
-            // Recargas
             const cardRecargas = document.getElementById('card-recargas');
             const btnRecargas = document.getElementById('btn-recargas');
             cardRecargas.addEventListener('click', function (e) {
                 if (e.target !== btnRecargas) btnRecargas.style.display = 'inline-block';
             });
-            // Logo lleva al inicio con animación
             document.getElementById('logo-home').addEventListener('click', function () {
                 window.location.href = 'index.html';
             });

@@ -1,5 +1,3 @@
-// llenar.js - Genera el catálogo de productos dinámicamente
-
 const productos = [
     {
         nombre: "Spacrk Go2",
@@ -219,22 +217,29 @@ function renderProductos() {
                 modal.querySelector('#modal-img').src = imgEl.src;
             }, 500);
         });
+        let lastTouch = 0;
         imgEl.addEventListener('touchend', function (e) {
             clearTimeout(longPressTimer);
-            if (imgEl.imagenes.length > 1) {
-                imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
-                imgEl.src = imgEl.imagenes[imgEl.imagenActual];
-            } else {
+            const now = Date.now();
+            if (now - lastTouch < 400 && imgEl.imagenes.length < 2) {
                 const modal = crearModalImagen();
                 modal.querySelector('#modal-img').src = imgEl.src;
+            } else if (imgEl.imagenes.length > 1) {
+                imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
+                imgEl.src = imgEl.imagenes[imgEl.imagenActual];
             }
+            lastTouch = now;
         });
         imgEl.addEventListener('click', function (e) {
             e.stopPropagation();
             if (imgEl.imagenes.length > 1) {
                 imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
                 imgEl.src = imgEl.imagenes[imgEl.imagenActual];
-            } else {
+            }
+        });
+        imgEl.addEventListener('dblclick', function (e) {
+            e.stopPropagation();
+            if (imgEl.imagenes.length < 2) {
                 const modal = crearModalImagen();
                 modal.querySelector('#modal-img').src = imgEl.src;
             }
@@ -254,6 +259,3 @@ document.addEventListener('DOMContentLoaded', function () {
     renderProductos();
     actualizarCarritoCantidad();
 });
-
-
-// simon

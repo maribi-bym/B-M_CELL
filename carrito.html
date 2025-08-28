@@ -71,7 +71,6 @@
                 total += subtotal;
                 const card = document.createElement('div');
                 card.className = 'card';
-                // Soporte para varias imágenes
                 let imagenes = Array.isArray(producto.imagen) ? producto.imagen : [producto.imagen];
                 const imgEl = document.createElement('img');
                 imgEl.src = imagenes[0];
@@ -134,12 +133,6 @@
                 });
                 cardsContainer.appendChild(card);
             });
-            // Mostrar total final (oculto)
-            // const totalDiv = document.createElement('div');
-            // totalDiv.style.textAlign = 'center';
-            // totalDiv.style.margin = '1em 0';
-            // totalDiv.innerHTML = `<p style='color:#e60023;font-size:1.2em;font-weight:bold;'>Total a pagar: C$${total.toFixed(2)}</p>`;
-            // cardsContainer.appendChild(totalDiv);
         }
         function actualizarCarritoCantidad() {
             const span = document.getElementById('carrito-cantidad');
@@ -158,7 +151,6 @@
             renderCarrito();
             actualizarCarritoCantidad();
         });
-        // Menú hamburguesa global
         const hamburger = document.getElementById('hamburger-menu');
         const navLinks = document.getElementById('nav-links');
         if (hamburger && navLinks) {

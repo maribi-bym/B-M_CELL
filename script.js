@@ -1,12 +1,3 @@
-// script.js adaptado para el nuevo diseño B&M
-// Puedes agregar aquí funciones globales para interacción y experiencia
-
-// Ejemplo: Dark mode toggle (si decides agregarlo en el futuro)
-// function toggleDarkMode() {
-//     document.body.classList.toggle('dark-mode');
-// }
-
-// Ejemplo: Mensaje de bienvenida en consola
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Bienvenido a B&M - Electrónica y servicios en Achuapa");
     // Menú hamburguesa
@@ -19,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 navLinks.classList.add('closing');
                 setTimeout(() => {
                     navLinks.classList.remove('closing');
-                }, 300); // Duración igual a la animación CSS
+                }, 300); 
             } else {
                 navLinks.classList.add('active');
             }
@@ -53,8 +44,6 @@ function crearModalImagen() {
 }
 
 function renderCarrito() {
-    // ...existing code...
-    // Al renderizar cada producto en el carrito:
     let imagenes = Array.isArray(producto.imagen) ? producto.imagen : [producto.imagen];
     let imagenActual = 0;
     const imgEl = document.createElement('img');
@@ -92,6 +81,4 @@ function renderCarrito() {
             imgEl.src = imagenes[imagenActual];
         }
     });
-    // ...agrega imgEl al card del producto en el carrito...
-    // ...existing code...
 }

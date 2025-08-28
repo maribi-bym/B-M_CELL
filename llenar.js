@@ -1,192 +1,117 @@
 const productos = [
     {
-<<<<<<< HEAD
         nombre: "Tecno Spark Go 2",
-        descripcion: "64 GB de Almacenamiento 6 GB de RAM",
-=======
-        nombre: "Spacrk Go2",
         descripcion: "64 GB de almacenamiento 6 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
-        imagen: ["img/smartphones/spacrk Go2.png",
-            "img/smartphones/spacrk Go2 1.png"],
+        imagen: [
+            "img/smartphones/spacrk Go2.png",
+            "img/smartphones/spacrk Go2 1.png"
+        ],
         alt: "Smartphones",
     },
     {
         nombre: "Redmi 15C",
-<<<<<<< HEAD
-        descripcion: "256 GB de Almacenamiento 8 GB de RAM",
-=======
         descripcion: "256 GB de almacenamiento 8 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/redmi15c_negro.jpg"],
         alt: "Smartphones",
     },
     {
         nombre: "Redmi 15C",
-<<<<<<< HEAD
-        descripcion: "128 GB de Almacenamiento 6 GB de RAM",
-=======
         descripcion: "128 GB de almacenamiento 6 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/redmi15c_azul.jpg"],
         alt: "Smartphones",
     },
     {
         nombre: "Redmi A5",
-<<<<<<< HEAD
-        descripcion: "64 GB de Almacenamiento 6 GB de RAM",
-=======
         descripcion: "64 GB de almacenamiento 6 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/redmiA5.jpg"],
         alt: "Smartphones",
     },
     {
-<<<<<<< HEAD
         nombre: "Poco C71",
-        descripcion: "64 GB de Almacenamiento 3 GB de RAM",
-=======
-        nombre: "poco C71",
         descripcion: "64 GB de almacenamiento 3 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/pocoC71.jpg"],
         alt: "Smartphones",
     },
     {
-<<<<<<< HEAD
         nombre: "Tecno Spark Go 1",
-        descripcion: "128 GB de Almacenamiento 8 GB de RAM",
-=======
-        nombre: "Spark Go1",
         descripcion: "128 GB de almacenamiento 8 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/sparkGo1.jpg"],
         alt: "Smartphones",
     },
     {
-<<<<<<< HEAD
         nombre: "Tecno Spark Go 1",
-        descripcion: "64 GB de Almacenamiento 6 GB de RAM",
-=======
-        nombre: "Spark Go1",
         descripcion: "64 GB de almacenamiento 6 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/sparkGo1.jpg"],
         alt: "Smartphones",
     },
     {
         nombre: "Infinix Smart 10",
-<<<<<<< HEAD
-        descripcion: "128 GB de Almacenamiento 6 GB de RAM",
-=======
-        descripcion: "64 GB de almacenamiento 6 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
+        descripcion: "128 GB de almacenamiento 6 GB de RAM",
         imagen: ["img/smartphones/infinixsmart10.jpg"],
         alt: "Smartphones",
     },
     {
         nombre: "Infinix Smart 10",
-<<<<<<< HEAD
-        descripcion: "64 GB de Almacenamiento 6 GB de RAM",
-=======
         descripcion: "64 GB de almacenamiento 6 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/infinixsmart10azul.jpg"],
         alt: "Smartphones",
     },
     {
-<<<<<<< HEAD
         nombre: "Samsung A06",
-        descripcion: "64 GB de Almacenamiento 6 GB de RAM",
-=======
-        nombre: "A06",
         descripcion: "64 GB de almacenamiento 6 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/A06celeste.jpg"],
         alt: "Smartphones",
     },
     {
-<<<<<<< HEAD
         nombre: "Samsung A16",
-        descripcion: "128 GB de Almacenamiento 6 GB de RAM",
-=======
-        nombre: "A16",
         descripcion: "128 GB de almacenamiento 6 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
-        imagen: ["img/smartphones/A16Verde.jpg",
+        imagen: [
+            "img/smartphones/A16Verde.jpg",
             "img/smartphones/A16Negro.jpg",
             "img/smartphones/A16Plata.jpg"
         ],
         alt: "Smartphones",
     },
     {
-<<<<<<< HEAD
         nombre: "Samsung A36",
-        descripcion: "256 GB de Almacenamiento 8 GB de RAM",
-=======
-        nombre: "A36",
         descripcion: "256 GB de almacenamiento 8 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/A36.jpg"],
         alt: "Smartphones",
     },
     {
-<<<<<<< HEAD
         nombre: "Samsung A56",
-        descripcion: "256 GB de Almacenamiento 8 GB de RAM",
-=======
-        nombre: "A56",
         descripcion: "256 GB de almacenamiento 8 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
-        imagen: ["img/smartphones/A56negro.jpg",
+        imagen: [
+            "img/smartphones/A56negro.jpg",
             "img/smartphones/A56Verde.jpg"
         ],
         alt: "Smartphones",
     },
     {
-<<<<<<< HEAD
         nombre: "Tecno Spark 30C",
-        descripcion: "256 GB de Almacenamiento 16 GB de RAM",
-=======
-        nombre: "Tecno 30C",
         descripcion: "256 GB de almacenamiento 16 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/Tecno30C.jpg"],
         alt: "Smartphones",
     },
     {
         nombre: "Redmi Note 14S",
-<<<<<<< HEAD
-        descripcion: "256 GB de Almacenamiento 8 GB de RAM",
-=======
         descripcion: "256 GB de almacenamiento 8 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/Redminote14s.jpg"],
         alt: "Smartphones",
     },
     {
-<<<<<<< HEAD
         nombre: "Redmi A3x",
-        descripcion: "256 GB de Almacenamiento 8 GB de RAM",
-=======
-        nombre: "Redmi3x",
         descripcion: "256 GB de almacenamiento 8 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/Redmi3x.jpg"],
         alt: "Smartphones",
     },
     {
         nombre: "Redmi Note 14",
-<<<<<<< HEAD
-        descripcion: "256 GB de Almacenamiento 8 GB de RAM",
-=======
         descripcion: "256 GB de almacenamiento 8 GB de RAM",
->>>>>>> 5e5526fe2e63ae59cb0d15bcaa8f772497644391
         imagen: ["img/smartphones/Redminote14.jpg"],
         alt: "Smartphones",
     },
 ];
-
 // Modal para mostrar imagen elegante
 function crearModalImagen() {
     const modal = document.createElement('div');

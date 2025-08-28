@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - B&M</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" id="logo-home" style="cursor:pointer;">B&M CELL</div>
+            <a href="carrito.html" id="carrito-icon"
+                style="margin-left:1em;display:flex;align-items:center;position:relative;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9" cy="21" r="1.5" fill="#e60023" />
+                    <circle cx="17" cy="21" r="1.5" fill="#e60023" />
+                    <path d="M3 6h2l.4 2M7 6h13l-1.35 6.45a2 2 0 0 1-1.95 1.55H8.53a2 2 0 0 1-1.95-1.55L5.4 8H19"
+                        stroke="#e60023" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span id="carrito-cantidad"
+                    style="position:absolute;top:-2px;right:-6px;background:#e60023;color:#fff;font-size:0.65em;padding:0px 5px;border-radius:50%;font-weight:bold;min-width:14px;text-align:center;line-height:1.2;display:none;">0</span>
+            </a>
+            <div class="hamburger" id="hamburger-menu" aria-label="Abrir menú" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="recargas.html">Recarga Free Fire / Blood Strike</a></li>
+                <li><a href="ubicacion.html">Ubicación</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-animate">
+        <section class="catalogo">
+            <h1 class="catalogo-titulo">Catálogo de Productos</h1>
+            <div class="cards">
+            </div>
+            <div style="text-align:center; margin-top:1em;">
+                <a href="https://wa.me/50587153450" class="btn">Consultar por WhatsApp</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 B&M CELL - Todos los derechos reservados</p>
+    </footer>
+    <script src="llenar.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const logoHome = document.getElementById('logo-home');
+            if (logoHome) {
+                logoHome.addEventListener('click', function () {
+                    window.location.href = 'index.html';
+                });
+            }
+        });
+
+        function actualizarCarritoCantidad() {
+            const span = document.getElementById('carrito-cantidad');
+            if (span) {
+                let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                let cantidadTotal = carrito.reduce((acc, p) => acc + p.cantidad, 0);
+                if (cantidadTotal > 0) {
+                    span.textContent = cantidadTotal;
+                    span.style.display = 'inline-block';
+                } else {
+                    span.style.display = 'none';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            actualizarCarritoCantidad();
+        });
+    </script>
+</body>
+
+</html>

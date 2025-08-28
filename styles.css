@@ -1,0 +1,433 @@
+body {
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background: #fafafa;
+    color: #222;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e60023;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.nav-links a {
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+}
+
+.nav-links a:hover {
+    color: #e60023;
+    border-bottom: 2px solid #e60023;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem 2rem 2rem;
+    background: #fff;
+    color: #222;
+}
+
+.hero h1 {
+    font-size: 2.7rem;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 1.5em;
+    color: #555;
+}
+
+.btn {
+    background: #e60023;
+    color: #fff;
+    border: none;
+    padding: 0.7em 2em;
+    border-radius: 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    margin: 0.5em;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 8px rgba(230, 0, 35, 0.08);
+}
+
+.btn:hover {
+    background: #ad081b;
+    box-shadow: 0 4px 16px rgba(230, 0, 35, 0.12);
+}
+
+.card.recarga-card,
+.form-contacto {
+    max-width: 400px;
+    margin: 2em auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    padding: 2em 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.cards,
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2em;
+    margin: 2em 0;
+}
+
+.card,
+.producto {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    padding: 2em 1em;
+    text-align: center;
+    transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
+    position: relative;
+    border: 1.5px solid #f3f3f3;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 18px;
+    pointer-events: none;
+    box-shadow: 0 0 0 0 #e60023;
+    transition: box-shadow 0.3s;
+}
+
+.card:hover,
+.producto:hover {
+    box-shadow: 0 12px 36px rgba(230, 0, 35, 0.13), 0 2px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-6px) scale(1.035);
+    border: 1.5px solid #e60023;
+}
+
+.card:hover::before {
+    box-shadow: 0 0 16px 2px #e6002333;
+}
+
+.card img,
+.producto img,
+.icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1em;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.card h3,
+.producto h3 {
+    margin: 0.5em 0 0.3em 0;
+    font-size: 1.25rem;
+    color: #e60023;
+    font-weight: 600;
+}
+
+.card p,
+.producto p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.form-contacto input,
+.form-contacto textarea,
+.recarga-form input[type="text"],
+.recarga-form input[type="number"] {
+    width: 100%;
+    padding: 0.8em;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    font-size: 1rem;
+    background: #fafafa;
+    margin-bottom: 0.7em;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.form-contacto button {
+    align-self: flex-end;
+}
+
+.info-contacto {
+    text-align: center;
+    margin-top: 2em;
+    color: #636e72;
+    font-size: 1rem;
+}
+
+footer {
+    background: #fff;
+    color: #e60023;
+    text-align: center;
+    padding: 1.5em 0;
+    margin-top: 3em;
+    font-size: 1rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.recarga-form label {
+    font-weight: 500;
+    margin-bottom: 0.2em;
+    color: #222;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-animate {
+    animation: fadeInPage 0.7s cubic-bezier(.4, 0, .2, 1);
+}
+
+.servicios-titulo {
+    text-align: center;
+    margin-top: 2.5em;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+}
+
+.catalogo-titulo {
+    text-align: center;
+    margin-top: 2.5em;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+}
+
+.ubicacion-titulo {
+    text-align: center;
+    margin-top: 2.5em;
+    margin-bottom: 1.2em;
+    font-weight: bold;
+}
+
+.ubicacion-texto {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #222;
+}
+
+.contacto-titulo {
+    text-align: center;
+    margin-top: 2.5em;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+}
+
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutMenu {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 1em;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+        margin-bottom: 0;
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        position: relative;
+        z-index: 20;
+    }
+
+    .hamburger span {
+        display: block;
+        height: 4px;
+        width: 100%;
+        background: #e60023;
+        margin: 7px 0;
+        border-radius: 2px;
+        transition: all 0.3s;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(247, 247, 247, 0.98);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        border-radius: 18px;
+        width: 90vw;
+        max-width: 340px;
+        margin: 0 auto;
+        padding: 1em 0.5em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+        transition: box-shadow 0.2s, background 0.2s;
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        pointer-events: auto;
+        display: flex;
+        animation: fadeInMenu 0.3s;
+    }
+
+    .nav-links.closing {
+        animation: fadeOutMenu 0.3s forwards;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        padding: 0.5em 0;
+        border-radius: 12px;
+        width: 100%;
+        text-align: center;
+        transition: background 0.2s;
+    }
+
+    .nav-links a:hover {
+        background: #e60023;
+        color: #fff;
+    }
+
+    .hero {
+        padding: 2em 0.5em 1em 0.5em;
+        margin-top: 0.5em;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5em;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 1em;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7em;
+        margin-top: 1em;
+        align-items: center;
+    }
+
+    .hero .btn {
+        width: 100%;
+        padding: 0.6em 0;
+        font-size: 1rem;
+        margin: 0.3em 0;
+        border-radius: 18px;
+        box-shadow: 0 2px 8px rgba(230, 0, 35, 0.10);
+        transition: box-shadow 0.2s, background 0.2s;
+    }
+
+    .hero .btn:hover {
+        background: #ad081b;
+        box-shadow: 0 4px 16px rgba(230, 0, 35, 0.16);
+    }
+
+    .cards,
+    .productos-grid {
+        grid-template-columns: 1fr;
+        gap: 1em;
+        margin: 1em 0;
+    }
+
+    .card,
+    .producto {
+        padding: 1em 0.5em;
+    }
+
+    .form-contacto {
+        padding: 1em 0.5em;
+    }
+
+    iframe {
+        width: 100% !important;
+        height: 220px !important;
+    }
+}

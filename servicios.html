@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - B&M</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" id="logo-home" style="cursor:pointer;">B&M CELL</div>
+            <div class="hamburger" id="hamburger-menu" aria-label="Abrir menú" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="recargas.html">Recarga Free Fire / Blood Strike</a></li>
+                <li><a href="ubicacion.html">Ubicación</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-animate">
+        <section class="servicios">
+            <h1 class="servicios-titulo">Nuestros Servicios</h1>
+            <div class="cards">
+                <div class="card" id="card-venta">
+                    <h3>Venta de móviles y accesorios</h3>
+                    <p>Encuentra los mejores productos al mejor precio.</p>
+                    <a class="btn" id="btn-productos" style="display:none;" href="productos.html">Ver productos</a>
+                </div>
+                <div class="card" id="card-reparacion">
+                    <h3>Reparación de electrónicos</h3>
+                    <p>Celulares, tablets, bocinas y más.</p>
+                    <a class="btn" id="btn-contacto" style="display:none;" href="contacto.html">Solicitar reparación</a>
+                </div>
+                <div class="card" id="card-recargas">
+                    <h3>Recarga Free Fire / Blood Strike</h3>
+                    <p>Diamantes, promociones y recargas para ambos juegos.</p>
+                    <a class="btn" id="btn-recargas" style="display:none;" href="recargas.html">Solicitar recarga</a>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:1em;">
+                <a href="contacto.html" class="btn">Contactanos</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 B&M CELL - Todos los derechos reservados</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cardVenta = document.getElementById('card-venta');
+            const btnVenta = document.getElementById('btn-productos');
+            cardVenta.addEventListener('click', function (e) {
+                if (e.target !== btnVenta) btnVenta.style.display = 'inline-block';
+            });
+            const cardReparacion = document.getElementById('card-reparacion');
+            const btnReparacion = document.getElementById('btn-contacto');
+            cardReparacion.addEventListener('click', function (e) {
+                if (e.target !== btnReparacion) btnReparacion.style.display = 'inline-block';
+            });
+            const cardRecargas = document.getElementById('card-recargas');
+            const btnRecargas = document.getElementById('btn-recargas');
+            cardRecargas.addEventListener('click', function (e) {
+                if (e.target !== btnRecargas) btnRecargas.style.display = 'inline-block';
+            });
+            document.getElementById('logo-home').addEventListener('click', function () {
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

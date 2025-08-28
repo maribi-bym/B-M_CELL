@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - B&M CELL</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" id="logo-home" style="cursor:pointer;">B&M CELL</div>
+            <a href="carrito.html" id="carrito-icon"
+                style="margin-left:1em;display:flex;align-items:center;position:relative;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9" cy="21" r="1.5" fill="#e60023" />
+                    <circle cx="17" cy="21" r="1.5" fill="#e60023" />
+                    <path d="M3 6h2l.4 2M7 6h13l-1.35 6.45a2 2 0 0 1-1.95 1.55H8.53a2 2 0 0 1-1.95-1.55L5.4 8H19"
+                        stroke="#e60023" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span id="carrito-cantidad"
+                    style="position:absolute;top:-2px;right:-6px;background:#e60023;color:#fff;font-size:0.65em;padding:0px 5px;border-radius:50%;font-weight:bold;min-width:14px;text-align:center;line-height:1.2;display:none;">0</span>
+            </a>
+            <div class="hamburger" id="hamburger-menu" aria-label="Abrir menú" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="recargas.html">Recarga Free Fire / Blood Strike</a></li>
+                <li><a href="ubicacion.html">Ubicación</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-animate">
+        <section class="carrito">
+            <h1 class="catalogo-titulo">Carrito de Compras</h1>
+            <div class="cards" id="carrito-cards"></div>
+            <div style="text-align:center; margin-top:1em;">
+                <a href="productos.html" class="btn">Seguir comprando</a>
+                <button class="btn" id="btn-whatsapp" style="background:#e60023;margin-left:1em;">Pedir por WhatsApp
+                </button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 B&M CELL - Todos los derechos reservados</p>
+    </footer>
+    <script>
+        function renderCarrito() {
+            const cardsContainer = document.getElementById('carrito-cards');
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            let total = 0;
+            cardsContainer.innerHTML = '';
+            let cantidadTotal = carrito.reduce((acc, p) => acc + p.cantidad, 0);
+            document.getElementById('carrito-cantidad').textContent = cantidadTotal;
+            if (carrito.length === 0) {
+                cardsContainer.innerHTML = '<p style="text-align:center; color:#e60023; font-weight:bold;">El carrito está vacío.</p>';
+                return;
+            }
+            carrito.forEach((producto, idx) => {
+                let precioNum = parseFloat(producto.precio?.replace('C$', '').replace(',', '.') || '0') || 0;
+                let subtotal = precioNum * (producto.cantidad || 1);
+                total += subtotal;
+                const card = document.createElement('div');
+                card.className = 'card';
+                let imagenes = Array.isArray(producto.imagen) ? producto.imagen : [producto.imagen];
+                const imgEl = document.createElement('img');
+                imgEl.src = imagenes[0];
+                imgEl.alt = producto.alt || '';
+                imgEl.className = 'icon';
+                imgEl.imagenActual = 0;
+                imgEl.imagenes = imagenes;
+                let longPressTimer;
+                imgEl.addEventListener('mousedown', function (e) {
+                    e.preventDefault();
+                    longPressTimer = setTimeout(function () {
+                        const modal = crearModalImagen();
+                        modal.querySelector('#modal-img').src = imgEl.src;
+                    }, 500);
+                });
+                imgEl.addEventListener('mouseup', function (e) {
+                    clearTimeout(longPressTimer);
+                });
+                imgEl.addEventListener('mouseleave', function (e) {
+                    clearTimeout(longPressTimer);
+                });
+                imgEl.addEventListener('touchstart', function (e) {
+                    e.preventDefault();
+                    longPressTimer = setTimeout(function () {
+                        const modal = crearModalImagen();
+                        modal.querySelector('#modal-img').src = imgEl.src;
+                    }, 500);
+                });
+                imgEl.addEventListener('touchend', function (e) {
+                    clearTimeout(longPressTimer);
+                    // Alternar imagen en móvil
+                    if (imgEl.imagenes.length > 1) {
+                        imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
+                        imgEl.src = imgEl.imagenes[imgEl.imagenActual];
+                    }
+                });
+                imgEl.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (imgEl.imagenes.length > 1) {
+                        imgEl.imagenActual = (imgEl.imagenActual + 1) % imgEl.imagenes.length;
+                        imgEl.src = imgEl.imagenes[imgEl.imagenActual];
+                    }
+                });
+                card.innerHTML = `
+                  <h3>${producto.nombre}</h3>
+                  <p>${producto.descripcion}</p>
+                  <p style="color:#e60023;font-weight:bold;">${producto.cantidad || 1} pedido${(producto.cantidad || 1) > 1 ? 's' : ''} de esto</p>
+                  <button class="btn" style="margin-top:1em;background:#ad081b;" type="button">Eliminar</button>
+                `;
+                card.prepend(imgEl);
+                card.querySelector('button').addEventListener('click', function () {
+                    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                    if ((producto.cantidad || 1) > 1) {
+                        carrito[idx].cantidad -= 1;
+                    } else {
+                        carrito.splice(idx, 1);
+                    }
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderCarrito();
+                });
+                cardsContainer.appendChild(card);
+            });
+        }
+        function actualizarCarritoCantidad() {
+            const span = document.getElementById('carrito-cantidad');
+            if (span) {
+                let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                let cantidadTotal = carrito.reduce((acc, p) => acc + p.cantidad, 0);
+                if (cantidadTotal > 0) {
+                    span.textContent = cantidadTotal;
+                    span.style.display = 'inline-block';
+                } else {
+                    span.style.display = 'none';
+                }
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            renderCarrito();
+            actualizarCarritoCantidad();
+        });
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    navLinks.classList.add('closing');
+                    setTimeout(() => {
+                        navLinks.classList.remove('closing');
+                    }, 300);
+                } else {
+                    navLinks.classList.add('active');
+                }
+            });
+        }
+        document.getElementById('logo-home').addEventListener('click', function () {
+            window.location.href = 'index.html';
+        });
+        document.getElementById('btn-whatsapp').addEventListener('click', function () {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            if (carrito.length === 0) return;
+            let mensaje = 'Hola, quiero pedir los siguientes productos:%0A';
+            carrito.forEach(p => {
+                mensaje += `- ${p.nombre} (${p.cantidad || 1} pedido${(p.cantidad || 1) > 1 ? 's' : ''}) - ${p.descripcion || ''}%0A`;
+            });
+            window.open(`https://wa.me/50587153450?text=${mensaje}`, '_blank');
+        });
+    </script>
+</body>
+
+</html>

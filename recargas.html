@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recargas Free Fire - B&M</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" id="logo-home" style="cursor:pointer;">B&M CELL</div>
+            <div class="hamburger" id="hamburger-menu" aria-label="Abrir menú" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="recargas.html">Recarga Free Fire / Blood Strike</a></li>
+                <li><a href="ubicacion.html">Ubicación</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-animate">
+        <section class="recargas">
+            <div class="card recarga-card">
+                <h1 class="card-title">Recargas</h1>
+                <form id="recarga-form" class="recarga-form">
+                    <div class="form-group" style="margin-bottom:1.2em;">
+                        <label for="nombre" style="font-weight:600;">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre"
+                            style="margin-top:0.3em;">
+                    </div>
+                    <div class="form-group" style="margin-bottom:1.2em;">
+                        <label for="juego" style="font-weight:600;">Selecciona el juego</label>
+                        <select id="juego" name="juego" required onchange="mostrarCampoID()"
+                            style="width:100%;padding:0.7em;border-radius:8px;border:1px solid #e0e0e0;background:#fafafa;font-size:1rem;margin-top:0.3em;">
+                            <option value="freefire">Free Fire</option>
+                            <option value="bloodstrike">Blood Strike</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="campo-id" style="margin-bottom:1.2em;">
+                        <label for="id-juego" id="label-id-juego" style="font-weight:600;">ID de Free Fire</label>
+                        <input type="text" id="id-juego" name="id-juego" required placeholder="Ingresa tu ID"
+                            style="margin-top:0.3em;">
+                    </div>
+                    <div class="form-group">
+                        <label for="dolares">Dólares a cargar</label>
+                        <input type="number" id="dolares" name="dolares" min="1" required placeholder="Ej: 5">
+                    </div>
+                    <div id="precio" class="precio"></div>
+                    <button type="button" class="btn btn-whatsapp" onclick="enviarRecargaWhatsapp()">Recarga Free Fire /
+                        Blood Strike</button>
+                </form>
+                <div class="info-contacto">
+                    <p class="recarga-minima">Recarga mínima: 1 dólar. Cada dólar equivale a 50 córdobas.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 B&M CELL - Todos los derechos reservados</p>
+    </footer>
+    <script>
+        function mostrarCampoID() {
+            const juego = document.getElementById('juego').value;
+            const label = document.getElementById('label-id-juego');
+            const input = document.getElementById('id-juego');
+            if (juego === 'freefire') {
+                label.textContent = 'ID de Free Fire';
+                input.placeholder = 'Ingresa tu ID de Free Fire';
+            } else {
+                label.textContent = 'ID de Blood Strike';
+                input.placeholder = 'Ingresa tu ID de Blood Strike';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', mostrarCampoID);
+
+        function enviarRecargaWhatsapp() {
+            const nombre = document.getElementById('nombre').value;
+            const juego = document.getElementById('juego').value;
+            const id = document.getElementById('id-juego').value;
+            const dolares = document.getElementById('dolares').value;
+            if (!nombre || !id || !dolares) return;
+            const cordobas = dolares * 50;
+            let mensaje = '';
+            if (juego === 'freefire') {
+                mensaje = `Hola, soy ${nombre}. Quiero recargar Free Fire. Mi ID: ${id}, dólares a cargar: ${dolares}, total: ${cordobas} córdobas. Cada dólar equivale a 50 córdobas.`;
+            } else {
+                mensaje = `Hola, soy ${nombre}. Quiero recargar Blood Strike. Mi ID: ${id}, dólares a cargar: ${dolares}, total: ${cordobas} córdobas. Cada dólar equivale a 50 córdobas.`;
+            }
+            window.open(`https://wa.me/50587153450?text=${encodeURIComponent(mensaje)}`, '_blank');
+        }
+
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.getElementById('logo-home').addEventListener('click', function () {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>

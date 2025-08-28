@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - B&M</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" id="logo-home" style="cursor:pointer;">B&M CELL</div>
+            <div class="hamburger" id="hamburger-menu" aria-label="Abrir menú" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="recargas.html">Recarga Free Fire / Blood Strike</a></li>
+                <li><a href="ubicacion.html">Ubicación</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-animate">
+        <section class="contacto">
+            <h1 class="contacto-titulo">Contáctanos</h1>
+            <form class="form-contacto" id="form-whatsapp">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" required></textarea>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+            <script>
+                document.getElementById('form-whatsapp').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var nombre = document.getElementById('nombre').value;
+                    var mensaje = document.getElementById('mensaje').value;
+                    var texto = `Hola, soy ${nombre} y tengo la siguiente consulta: ${mensaje}`;
+                    var url = `https://wa.me/50587153450?text=${encodeURIComponent(texto)}`;
+                    window.open(url, '_blank');
+                });
+            </script>
+            <div class="info-contacto">
+                <p>Teléfono: +505 8715-3450</p>
+                <p>Dirección: 3C46+2H Achuapa, Nicaragua</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 B&M CELL - Todos los derechos reservados</p>
+    </footer>
+    <script>
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburgerMenu.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                navLinks.classList.add('closing');
+                setTimeout(() => {
+                    navLinks.classList.remove('closing');
+                }, 500);
+            } else {
+                navLinks.classList.add('active');
+            }
+        });
+        document.getElementById('logo-home').addEventListener('click', function () {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>
